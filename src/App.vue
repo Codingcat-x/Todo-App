@@ -2,8 +2,8 @@
   <div id="app">
     <div class="container">
       <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 col-sm-12">
           <VueHeader :receive="receive"/>
           <VueAlerts v-if="vueAlertsDisplay" :hideAlerts="hideAlerts" class="mt-2"/>
           <VueList v-if="todos.length > 0" :todos="todos" class="mt-2"
@@ -14,7 +14,7 @@
           <VueFooter class="mt-2" v-show="todos.length > 0" 
             :todos="todos" :selectAll="selectAll" :clearCompleted="clearCompleted"/>
         </div>
-        <div class="col-3"></div>
+        <div class="col-lg-3"></div>
       </div>
     </div>
   </div>
