@@ -95,7 +95,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--bs-body-color);
-  margin-top: 20px;
 }
 h3 {
   text-align: center;

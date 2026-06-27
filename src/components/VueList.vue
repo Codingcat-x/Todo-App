@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
 .list-group {
-  max-height: calc(100vh - 220px);
+  max-height: calc(100vh - 230px);
   overflow-y: auto;
 }
 .list-group::-webkit-scrollbar {
