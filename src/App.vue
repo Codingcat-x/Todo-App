@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6 col-sm-12">
-          <VueHeader :receive="receive"/>
+          <VueHeader :receive="receive" :toggleTheme="toggleTheme" :isDark="isDark"/>
           <VueAlerts v-if="vueAlertsDisplay" :hideAlerts="hideAlerts" class="mt-2"/>
           <VueList v-if="todos.length > 0" :todos="todos" class="mt-2"
             :checkTodo="checkTodo" :removeTodo="removeTodo"/>
@@ -33,16 +33,23 @@ export default {
     return {
       vueAlertsDisplay: false,
       todos: JSON.parse(localStorage.getItem('todos')) || [],
+      isDark: localStorage.getItem('theme') === 'dark',
+    }
+  },
+  mounted() {
+    // 页面加载时从 localStorage 读取主题偏好并应用到 <html>
+    const theme = localStorage.getItem('theme');
+    if (theme) {
+      document.documentElement.setAttribute('data-bs-theme', theme);
     }
   },
   methods: {
+
     // 隐藏因为输入框为空时触发的警告框
-    // Hide alerts when input is empty
     hideAlerts() {
       this.vueAlertsDisplay = false;
     },
     // 接收来自VueHeader组件的输入数据并接收输入框是否为空的isEmpty值
-    // Receive data from VueHeader component and receive isEmpty value
     receive(data, isEmpty) {
       if (isEmpty) return this.vueAlertsDisplay = true;
       this.todos.unshift(data);
@@ -56,23 +63,23 @@ export default {
     removeTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
-    // 全选所有的Todo
-    // Select all todos
     selectAll(bool) {
       this.todos.forEach(todo => {
         todo.completed = bool;
       })
     },
-    // 清除所有已完成的Todo
-    // Clear completed todos
     clearCompleted() {
       this.todos = this.todos.filter(todo => !todo.completed);
+    },
+    toggleTheme() {
+      this.isDark = !this.isDark;
+      const theme = this.isDark ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-bs-theme', theme);
+      localStorage.setItem('theme', theme);
     }
   },
   watch: {
     todos: {
-      // 开启深度监视
-      // Open deep watching
       deep: true,
       handler(value) {
         localStorage.setItem('todos', JSON.stringify(value));
@@ -87,7 +94,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: var(--bs-body-color);
   margin-top: 20px;
 }
 h3 {

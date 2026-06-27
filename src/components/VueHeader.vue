@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Todos</a>
+        <a class="navbar-brand" href="#">To-Do</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -13,13 +13,22 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
           </ul>
-          <form class="d-flex form" role="search">
-            <input class="form-control me-2" type="search" placeholder="Add a todo item and press enter" 
-            aria-label="Search" @keyup.enter="addItem" v-model="text">
-          </form>
+          <div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+              :checked="isDark" @click="toggleTheme">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Dark mode</label>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">To-Do item</span>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+         aria-describedby="inputGroup-sizing-default"  placeholder="Add a todo item and press enter"
+         @keyup.enter="addItem" v-model="text">
+      </div>
   </div>
 </template>
 
@@ -28,7 +37,7 @@ import { nanoid } from 'nanoid';
 
 export default {
   name: 'VueHeader',
-  props: ['receive'],
+  props: ['receive', 'toggleTheme', 'isDark'],
   data() {
     return {
       text: '',
@@ -55,10 +64,10 @@ export default {
 </script>
 
 <style scoped>
-.form {
+/* .form {
   width: 70%;
 }
 .form-control {
   width: 100%;
-}
+} */
 </style>
