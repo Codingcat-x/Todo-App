@@ -39,7 +39,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/<你的用户名>/<仓库名>.git
+git clone https://github.com/MrY520/Todo-App.git
 
 # 进入项目目录
 cd my_vue_project
