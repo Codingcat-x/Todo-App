@@ -25,48 +25,9 @@
 - **响应式设计** — 基于 Bootstrap 5，适配各种屏幕
 - **深色模式切换** — 浅色/深色模式切换
 
-## 运行截图
+## 运行效果
 
 ![预览](./image/preview.png)
-
-## 快速开始
-
-### 环境要求
-
-- [Node.js](https://nodejs.org/) (v12 或以上)
-- npm 或 yarn
-
-### 安装与运行
-
-```bash
-# 克隆仓库
-git clone https://github.com/MrY520/Todo-App.git
-
-# 进入项目目录
-cd my_vue_project
-
-# 安装依赖
-npm install
-
-# 启动开发服务器
-npm run serve
-```
-
-打开浏览器访问 `http://localhost:8080`，修改代码后页面会自动热更新。
-
-### 生产构建
-
-```bash
-npm run build
-```
-
-构建产物在 `dist/` 目录中，可直接部署。
-
-### 代码检查
-
-```bash
-npm run lint
-```
 
 ## 项目结构
 
@@ -116,7 +77,7 @@ App.vue
 | `selectAll` | App → VueFooter | 回调：全选/取消全选 |
 | `clearCompleted` | App → VueFooter | 回调：清除已完成 |
 
-## 技术栈
+## 使用的框架
 
 - **[Vue 2](https://v2.vuejs.org/)** — 渐进式 JavaScript 框架
 - **[Bootstrap 5](https://getbootstrap.com/)** — 响应式 CSS 框架
